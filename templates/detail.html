@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- products -->
+
+
+<head>
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 20px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+</style>
+</head>
+<body>
+    
+    <div class="laptop">
+        <div class="container">
+           <div class="row">
+              
+              <div class="col-md-6">
+                 <div class="laptop_box">
+                    
+                 </div>
+              </div>
+           </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2 style="text-align:center">Detail Card</h2>
+
+<div class="card"style="width:1000px;height:300px;">
+   <img class="card-img-top" src= "{{pr.img.url}}"   alt="Card image cap" style="width:599px;height:500px;"/>
+   <div class="card-body">
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+  <h1>{{pr.name}}</h1>
+  <p>price:{{pr.price}}Rs</p><br>
+  <p>{{pr.desc}}</p><br>
+  <p>Stock: {{pr.stock}}</p><br>
+  {% if pr.stock <= 0 %}
+  <h1 style='color:red'>sorry .No stock is left</h1>
+         {% else %}
+         <!-- <button type="button" class="btn btn-info">Add to cart</button></p></a> -->
+        <a href="{% url 'addcart' pr.id %}" class="btn btn-info">Add to cart</button></p></a>
+</div>
+</div>
+
+{% endif %}
+
+{% endblock %}
